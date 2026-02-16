@@ -53,13 +53,13 @@ $uploadUrl = $uploadUrl->withHost('uploads.github.com');
 // Upload ebay-sdk-php.zip
 $response = $client->post($uploadUrl . '/assets?name=ebay-sdk-php.zip', [
     'headers' => ['Content-Type' => 'application/zip'],
-    'body'    => Psr7\try_fopen(__DIR__ . '/artifacts/ebay-sdk-php.zip', 'r')
+    'body' => Psr7\Utils::tryFopen(__DIR__ . '/artifacts/ebay-sdk-php.zip', 'r')
 ]);
 echo "ebay-sdk-php.zip uploaded to: " . json_decode($response->getBody(), true)['browser_download_url'] . "\n";
 
 // Upload ebay-sdk-php.phar
 $response = $client->post($uploadUrl . '/assets?name=ebay-sdk-php.phar', [
     'headers' => ['Content-Type' => 'application/phar'],
-    'body'    => Psr7\try_fopen(__DIR__ . '/artifacts/ebay-sdk-php.phar', 'r')
+    'body' => Psr7\Utils::tryFopen(__DIR__ . '/artifacts/ebay-sdk-php.phar', 'r')
 ]);
 echo "ebay-sdk-php.phar uploaded to: " . json_decode($response->getBody(), true)['browser_download_url'] . "\n";
